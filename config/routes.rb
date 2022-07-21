@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'questions#index'
-  put '/questions/:id/hide', to: 'questions#hide'
-  resources :questions
+  resources :questions do
+    put 'hide', on: :member
+  end
 end
