@@ -9,10 +9,10 @@
     <%= button_to fa_icon('trash-o'), question_path(@question), method: :delete,
        title: 'Delete question', form: { data: { turbo_confirm: 'Are you sure?' } } %>
     <% unless @question.hidden %>
-      <%= button_to fa_icon('eye-slash'), { action: "hide" }, title: 'Hide question',
+      <%= button_to fa_icon('eye-slash'), hide_question_path, title: 'Hide question',
       method: :put %>
     <% end %>
   </div>
 
-  <p class="mt"><%= link_to "all questions", "/questions", class: 'button button-main' %></p>
+  <p class="mt"><%= link_to "all questions", questions_path, class: 'button button-main' %></p>
 </div>
