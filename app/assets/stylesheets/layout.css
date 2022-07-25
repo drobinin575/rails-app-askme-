@@ -14,3 +14,17 @@ body {
   background: #fff;
   padding: 20px;
 }
+
+.navbar {
+  background-color: #370617;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: white;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+}
