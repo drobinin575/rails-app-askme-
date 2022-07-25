@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Askme</title>
+    <title>ask.me</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,9 +12,25 @@
 
   <body>
     <div class="wrapper">
+      <div class="navbar">
+        <p class="title-sm text-bold"><%= link_to 'ask.me', root_path %></p>
+        <div>
+          <% if current_user.present? %>
+            <%= "@#{current_user.nickname}" %>
+            <%= button_to 'Sign out', session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Sign up', new_user_path, class: 'button button-yellow' %>
+            <%= link_to 'Sign in', new_session_path, class: 'button button-yellow' %>
+          <% end %>
+        </div>
+      </div>
+
       <% if flash[:notice].present? %>
         <p class="mt mb message message-notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert].present? %>
+        <p class="mt mb message message-alert"><%= flash[:alert] %></p>
       <% end %>
+
       <%= yield %>
     </div>
   </body>
