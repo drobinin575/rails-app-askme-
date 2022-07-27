@@ -2,15 +2,20 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:edit, :destroy, :show, :hide, :update]
 
   def create
-    question = Question.create(question_params)
+    @question = Question.new(question_params)
 
-    redirect_to question_path(question), notice: 'Your question was created.'
+    if @question.save
+      redirect_to question_path(@question), notice: 'Your question has been created.'
+    else
+      flash.now[:alert] = 'Input data is invalid.'
+      render :new
+    end
   end
 
   def destroy
     @question.destroy
 
-    redirect_to questions_path, notice: 'Your question was deleted.'
+    redirect_to questions_path, notice: 'Your question has been deleted.'
   end
 
   def edit
@@ -35,9 +40,12 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update(question_params)
-
-    redirect_to question_path(@question), notice: 'Your question was updated.'
+    if @question.update(question_params)
+      redirect_to question_path(@question), notice: 'Your question has been updated.'
+    else
+      flash.now[:alert] = 'Input data is invalid.'
+      render :edit
+    end
   end
 
   private

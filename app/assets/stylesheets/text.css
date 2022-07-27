@@ -20,7 +20,7 @@ a, button {
 }
 
 .text-sm {
-  font-size: 80%;
+  font-size: 75%;
 }
 
 .text-hidden {
@@ -29,6 +29,10 @@ a, button {
 
 .text-grey {
   color: grey;
+}
+
+.text-red {
+  color: #D00000;
 }
 
 .text-bold {
