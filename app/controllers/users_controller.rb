@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:destroy, :edit, :update]
+  before_action :set_user, only: [:destroy, :edit, :reset, :update]
 
   def new
     session[:current_time] = Time.now
@@ -29,6 +29,11 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def reset
+    @user.update(navbar_color: nil)
+    redirect_to root_path
+  end
+
   def update
     if @user.update(user_params)
       redirect_to root_path, notice: 'Your profile has been updated.'
@@ -42,7 +47,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :name, :nickname, :email, :password, :password_confirmation
+      :name, :nickname, :email, :password, :password_confirmation, :navbar_color
     )
   end
 
