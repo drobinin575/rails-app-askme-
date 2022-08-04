@@ -12,6 +12,11 @@
   <p><%= form.label :body, 'Question text' %></p>
   <p><%= form.text_area :body, rows: 5, class: 'form-text-area' %></p>
 
+  <% if question.persisted? %>
+    <p><%= form.label :answer, 'Answer' %></p>
+    <p><%= form.text_area :answer, rows: 5, class: 'form-text-area' %></p>
+  <% end %>
+
   <p class="mt"><%= form.submit 'Save', class: 'button button-main' %>
     or <%= link_to 'return', :back %></p>
 <% end %>
