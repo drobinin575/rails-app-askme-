@@ -21,7 +21,7 @@
         <p class="title-sm text-bold"><%= link_to 'ask.me', root_path %></p>
         <div>
           <% if current_user.present? %>
-            <%= link_to at_nickname, edit_user_path(current_user) %>
+            <%= link_to display_at_sign(current_user), user_path(current_user) %>
             <%= button_to 'Sign out', session_path, method: :delete %>
           <% else %>
             <%= link_to 'Sign up', new_user_path, class: 'button button-yellow' %>

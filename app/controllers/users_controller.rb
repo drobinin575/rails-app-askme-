@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:destroy, :edit, :reset, :update]
+  before_action :set_user, only: [:destroy, :edit, :reset, :show, :update]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
+
 
   def new
     session[:current_time] = Time.now
@@ -34,6 +36,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @questions = @user.questions
+    @question = Question.new(user: @user)
+  end
+
   def update
     if @user.update(user_params)
       redirect_to root_path, notice: 'Your profile has been updated.'
@@ -44,6 +51,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    redirect_with_alert unless @user == current_user
+  end
 
   def user_params
     params.require(:user).permit(

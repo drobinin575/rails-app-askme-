@@ -8,6 +8,8 @@ class User < ApplicationRecord
   }
   validates :nickname, length: { in: 2..40 }, format: { with: /\A\w+\z/ }
 
+  has_many :questions, dependent: :delete_all
+
   private
 
   def downcase_nickname

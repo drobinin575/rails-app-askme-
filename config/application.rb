@@ -18,5 +18,6 @@ module Askme
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # config.action_controller.per_form_csrf_tokens = false
   end
 end

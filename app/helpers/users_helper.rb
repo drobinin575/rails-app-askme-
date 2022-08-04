@@ -1,5 +1,5 @@
 module UsersHelper
-  def at_nickname
-    "@#{current_user.nickname}"
+  def display_at_sign(user)
+    "@#{user.nickname}"
   end
 end
