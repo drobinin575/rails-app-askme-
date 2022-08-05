@@ -14,7 +14,11 @@
 
 <div>
   <h2 class="container title-lg mt-sm">
-    <%= @questions.count %> <%= inclination(@questions.count, 'question', 'questions') %>
+    <% if @questions.present? || current_user == @user %>
+      <%= @questions.count %> <%= inclination(@questions.count, 'question', 'questions') %>
+    <% else %>
+      <p>Ask <%= display_at_sign(@user) %> something!</p>
+    <% end %>
   </h2>
   <% @questions.each do |question| %>
     <div class="container mt-sm <%= "text-hidden" if question.hidden %>">

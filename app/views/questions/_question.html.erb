@@ -1,3 +1,11 @@
+<div class="text-grey mb">
+  <% if question.author %>
+    <p><%= link_to display_at_sign(question.author), user_path(question.author) %> asks:</p>
+  <% else %>
+    <p>anonymous user asks:</p>
+  <% end %>
+</div>
+
 <div class="mb-sm line-break"><%= question.body %></div>
 
 <% if question.answer.present? %>
