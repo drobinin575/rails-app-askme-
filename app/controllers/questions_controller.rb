@@ -6,8 +6,9 @@ class QuestionsController < ApplicationController
     question_params = params.require(:question).permit(:body, :user_id, :author)
 
     @question = Question.new(question_params)
-
-    @question.author_id = current_user.id
+    if current_user
+      @question.author_id = current_user.id
+    end
 
     if @question.save
       redirect_to user_path(@question.user), notice: 'Your question has been created.'
