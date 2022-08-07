@@ -6,9 +6,8 @@ class QuestionsController < ApplicationController
     question_params = params.require(:question).permit(:body, :user_id, :author)
 
     @question = Question.new(question_params)
-    if current_user
-      @question.author_id = current_user.id
-    end
+
+    @question.author = current_user
 
     if @question.save
       redirect_to user_path(@question.user), notice: 'Your question has been created.'
@@ -35,8 +34,8 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @question = Question.new
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc).first(10)
+    @users = User.order(created_at: :desc).first(10)
   end
 
   def new

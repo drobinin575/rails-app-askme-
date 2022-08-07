@@ -1,7 +1,10 @@
 <div class="container">
-  <h2 class="title-lg mb">Question</h2>
+  <h2 class="title-lg mb">Question <%= @question.id %></h2>
 
+  <p class="mt">All questions for <%= link_to display_at_sign(@question.user),
+                                              user_path(@question.user) %></p>
+</div>
+
+<div class="container mt">
   <%= render 'question', question: @question %>
-
-  <p class="mt"><%= link_to "all questions", questions_path, class: 'button button-main' %></p>
 </div>

@@ -6,3 +6,46 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.users-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.users-box-user {
+  flex-basis: 100px;
+  flex-grow: 0;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.users-box-user a {
+  color: white;
+  text-decoration: none;
+}
+
+.user-bg-color0 {
+  background: orange;
+}
+
+.user-bg-color1 {
+  background: darkorange;
+}
+
+.user-bg-color2 {
+  background: #03071E;
+}
+
+.user-bg-color3 {
+  background: #730E15;
+}
+
+.user-bg-color4 {
+  background: mediumvioletred;
+}
+
+.rounded {
+  border-radius: 100%;
+}
