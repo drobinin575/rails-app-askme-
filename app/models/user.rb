@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
   has_secure_password
   before_validation :downcase_nickname
 
