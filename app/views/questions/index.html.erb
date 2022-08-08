@@ -10,7 +10,7 @@
 
 <div>
   <h2 class="container title-lg mt">
-    Last <%= @questions.count %>
+    Last <%= @questions.length %>
     <%= inclination(@questions.count, 'question', 'questions') %>
   </h2>
   <% @questions.each do |question| %>
