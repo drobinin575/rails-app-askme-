@@ -25,19 +25,14 @@
     <p class="mt"><%= form.label :password_confirmation %></p>
     <p><%= form.password_field :password_confirmation, class: 'form-text-field' %></p>
 
+    <p class="mt-lg"><%= form.label :navbar_color, 'You can change navigation bar`s color' %></p>
+    <p class="mt-sm" id="color"><%= form.color_field :navbar_color, value: "#{current_user.navbar_color}",
+                            class: 'color-field' %></p>
+
     <p class="mt-lg"><%= form.submit 'Save', class: 'button button-main' %></p>
   <% end %>
 
-  <h2 class="title-lg mb mt-lg">Change navigation color</h2>
-  <%= form_with model: @user do |form| %>
-    <p class="mt"><%= form.label :navbar_color, 'Color' %></p>
-    <p><%= form.color_field :navbar_color, class: 'form-text-area' %></p>
-
-    <p class="mt"><%= form.submit 'Change', class: 'button button-main' %></p>
-  <% end %>
-
-  <p class="mt"><%= button_to 'Set default color', reset_user_path(@user),
-                              method: :put, class: 'button button-main' %></p>
+  <button class="text-sm">choose default color</button>
 
   <p class="mt-lg"><%= button_to 'Delete the account', user_path(@user), method: :delete,
   form: { data: { turbo_confirm: 'Are you sure?' } } %></p>

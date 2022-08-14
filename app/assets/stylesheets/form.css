@@ -14,3 +14,8 @@
   box-sizing: border-box;
   width: 100%;
 }
+
+.color-field {
+  height: 3em;
+  width: 35%;
+}

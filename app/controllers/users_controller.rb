@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:destroy, :edit, :reset, :show, :update]
+  before_action :set_user, only: [:destroy, :edit, :show, :update]
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
 
@@ -31,11 +31,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def reset
-    @user.update(navbar_color: nil)
-    redirect_to root_path
-  end
-
   def show
     @questions = @user.questions.order(created_at: :desc)
     @question = Question.new(user: @user)
@@ -43,7 +38,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to root_path, notice: 'Your profile has been updated.'
+      redirect_to user_path(current_user), notice: 'Your profile has been updated.'
     else
       flash.now[:alert] = 'The input data is invalid.'
       render :edit
